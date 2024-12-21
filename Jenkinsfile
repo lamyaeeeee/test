@@ -1,8 +1,8 @@
-<pipeline {
+pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool name: 'Maven', type: 'maven'
+        MAVEN_HOME = tool(name: 'Maven', type: 'maven')
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_IMAGE = 'test-project'
     }
@@ -28,14 +28,14 @@
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER} .'
+                sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER} ."
             }
         }
 
         stage('Publish Docker Image') {
             steps {
-                withDockerRegistry([credentialsId: 'dockerhub-credentials', url: 'https://${DOCKER_REGISTRY}']) {
-                    sh 'docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER}'
+                withDockerRegistry([credentialsId: 'dockerhub-credentials', url: "https://${DOCKER_REGISTRY}"]) {
+                    sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER}"
                 }
             }
         }
@@ -50,6 +50,4 @@
         }
     }
 }
-    </build>
 
-</project>

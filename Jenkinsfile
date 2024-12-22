@@ -34,6 +34,7 @@ pipeline {
 
         stage('Publish Docker Image') {
             steps {
+                sh 'chmod +x ./deploy_to_server.sh'
                 sh './deploy_to_server.sh'
             }
         }

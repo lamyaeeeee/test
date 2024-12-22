@@ -4,7 +4,7 @@ pipeline {
     environment {
         MAVEN_HOME = tool(name: 'Maven', type: 'maven')
         DOCKER_REGISTRY = 'docker.io'
-        DOCKER_IMAGE = 'test-project'
+        DOCKER_IMAGE = 'lamyae_app'
     }
 
     stages {
@@ -28,25 +28,23 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh "sudo docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER} ."
+                sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER} ."
             }
         }
 
         stage('Publish Docker Image') {
             steps {
-                
-                    sh "sudo docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_NUMBER}"
-                }
+                sh './deploy_to_server.sh'
             }
         }
     }
 
     post {
         success {
-            echo 'Build and deployment completed successfully.'
+            echo 'Build et déploiement terminés avec succès.'
         }
         failure {
-            echo 'Build or deployment failed.'
+            echo 'Le build ou le déploiement a échoué.'
         }
     }
 }

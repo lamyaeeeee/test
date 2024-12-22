@@ -2,7 +2,7 @@
 
 # je définis les variables nécessaires pour l'exécution du script.
 DOCKER_USERNAME="lamyae237"
-DOCKER_PASSWORD="$DOCKER_PASSWORD_ENV"
+DOCKER_PASSWORD="dckr_pat_9wU0aVJfzPBNxCtnpkdY1R6ca5U"
 DOCKER_IMAGE_NAME="lamyae_app"
 DOCKER_IMAGE_TAG="latest"
 REMOTE_SERVER="192.168.157.129"

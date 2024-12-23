@@ -20,7 +20,7 @@ Le pipeline Jenkins est organisé en plusieurs étapes (stages) qui assurent l'i
 
 1. **Checkout** : Récupération du code source depuis le dépôt Git.
 2. **Build** : Compilation du projet à l'aide de **Maven** pour générer les artefacts nécessaires.
-3. **Test** : Exécution des tests unitaires avec **Maven** pour s'assurer que le code fonctionne comme prévu.
+3. **Test** : Exécution des tests unitaires avec **Junit** pour s'assurer que le code fonctionne comme prévu.
 4. **Docker Build** : Création de l'image Docker du projet compilé pour faciliter le déploiement.
 5. **Publish Docker Image** : Envoi de l'image Docker vers DockerHub et déploiement de l'application sur un serveur distant via un script.
 
@@ -32,6 +32,7 @@ Chaque étape est exécutée de manière séquentielle, garantissant ainsi la fi
 Cette étape récupère le code source à partir du dépôt Git, garantissant que le pipeline travaille avec la dernière version du code. Jenkins se connecte au dépôt Git, télécharge les dernières modifications et les prépare pour les étapes suivantes.
 
 ![Checkout SCM](./images/checkoutsmc.png)
+- 
 ![Checkout](./images/checkoutt.png)
 
 #### 2. **Build**
@@ -89,7 +90,7 @@ Le script **deploy_to_server.sh** que j'ai développé permet d'automatiser le p
 
 ### **🏁 Conclusion**
 
-Grâce à ce script **deploy_to_server.sh**, j'ai automatisé l'intégralité du processus de création, de publication et de déploiement de l'image Docker. Cela simplifie le flux de travail et assure un déploiement rapide et fiable, en garantissant que l'application sera déployée sur le serveur distant sans intervention manuelle.
+A l'aide du script **deploy_to_server.sh**, j'ai automatisé l'intégralité du processus de création, de publication et de déploiement de l'image Docker. Cela simplifie le flux de travail et assure un déploiement rapide et fiable, en garantissant que l'application sera déployée sur le serveur distant sans intervention manuelle.
 
 
 
